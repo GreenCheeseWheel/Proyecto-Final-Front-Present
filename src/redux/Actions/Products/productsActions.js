@@ -124,8 +124,7 @@ export const filterProducts = (filter) => {
                 type: GET_FILTERED_PRODUCTS,
                 payload: data
             })
-            console.log('DATA');
-            console.log(data);
+            
 
         } catch (error) {
             console.log(error);

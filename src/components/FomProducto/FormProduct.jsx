@@ -63,17 +63,11 @@ const FormProduct = () => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    /*
     axios
       .post("https://pf-back-deploy.onrender.com/product", data)
-      .then((res) => alert("Prudcto cargado exitosamente!"))
-      .catch((error) => alert(error));
-    */
-
-    axios
-      .post("http://localhost:3001/product", data)
-      .then((res) => alert("Prudcto cargado exitosamente!"))
+      .then((res) => alert("Prducto cargado exitosamente!"))
       .catch((error) => alert(error.response.data.error));
+    
 
     setData({
       name: "",
@@ -96,10 +90,8 @@ const FormProduct = () => {
       [name]: value,
     });
 
-    console.log("Nuevos errores: " + JSON.stringify(newErrors));
     setErrors(newErrors);
     isFormValid();
-    console.log("Errors es:" + JSON.stringify(errors));
   };
 
   useEffect(() => {
