@@ -5,9 +5,8 @@ import { getCategories, filterProducts, clearFilters, anyFilter } from '../../re
 const Filters = () => {
     const dispatch = useDispatch();
 
-    
-
     const prices = [100, 500, 5000, 7500, 10000, 25000];
+    
     const [filters, setFilters] = useState({
         category: undefined,
         price: undefined,
@@ -20,40 +19,42 @@ const Filters = () => {
         dispatch(getCategories())
     },[])
 
-    const handleFilter = (event) => {
-            dispatch(filterProducts(event.target.value))
-        } 
 
     const showAll = () => {
             dispatch(clearFilters())
-
     }
 
-
-    // ESTO ACA ABAJO ES LO MIO
+    // Filter string es la query que se pasa por la action
     const createFilterString = (filters_obj) => {
         const filtersArr = [];
+
+        for(const key of Object.keys(filters_obj))
+        {
+            console.log("Key: " + key);
+            if(filters_obj[key] && filters_obj[key].length > 0)
+            {
+                filtersArr.push("" + key + "=" + filters_obj[key]);
+            }
+        }
+
         let filterString = "?";
 
-        filters_obj.category ? filtersArr.push(`category=${filters_obj.category}`) : "";
-        filters_obj.price ? filtersArr.push(`price=${filters_obj.price}`) : ""
-        filters_obj.sort ? filtersArr.push(`sort=${filters_obj.sort}`) : "";
-        
 
         filterString += filtersArr.join("&");
-        return filterString.length > 1 ? filterString : "";
+
+        return filtersArr.length ? filterString : "";
     }
 
     const addCategory = (event) => {
         const category = event.target.value;
+
         // We should create the filter string here
         // and give it to the anyFilter action
         setFilters(prev => {return {...prev, category}} );
 
         const filterString = createFilterString({...filters, category});
-        dispatch(anyFilter(filterString));
         
-        //dispatch(filterProducts(event.target.value))
+        dispatch(filterProducts(filterString))
     }
 
     const changeMaxPrice = (event) => {
@@ -61,7 +62,7 @@ const Filters = () => {
         setFilters(prev => {return {...prev, price}});
 
         const filterString = createFilterString({...filters, price});
-        dispatch(anyFilter(filterString));
+        dispatch(filterProducts(filterString))
     }
 
     const changeSort = (event) => {
@@ -69,7 +70,7 @@ const Filters = () => {
         setFilters(prev => {return {...prev, sort}});
         
         const filterString = createFilterString({...filters, sort});
-        dispatch(anyFilter(filterString));
+        dispatch(filterProducts(filterString))
     }
 
 

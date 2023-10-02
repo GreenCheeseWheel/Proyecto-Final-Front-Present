@@ -119,8 +119,7 @@ export const deleteProduct = (id) => {
 export const filterProducts = (filter) => {
     return async (dispatch) => {
         try {
-            //const { data } = await axios.get(`https://pf-back-deploy.onrender.com/product?category=${filter}`);
-            const { data } = await axios.get(`http://localhost:3001/product?category=${filter}`);
+            const { data } = await axios.get(`https://pf-back-deploy.onrender.com/product${filter}`);
             dispatch({
                 type: GET_FILTERED_PRODUCTS,
                 payload: data
