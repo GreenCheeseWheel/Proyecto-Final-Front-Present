@@ -7,7 +7,7 @@ const Filters = () => {
 
     
 
-    const prices = [50, 500, 5000, 7500, 10000];
+    const prices = [100, 500, 5000, 7500, 10000, 25000];
     const [filters, setFilters] = useState({
         category: undefined,
         price: undefined,
@@ -84,8 +84,8 @@ const Filters = () => {
                 {allCategories.map(category=><option value={category.name} key={category.id}>{category.name}</option>)}
             </select>
             <select onChange={changeMaxPrice}>
-                <option value={''}>-- Precio --</option>
-                {prices?.map((price, index) => <option value={price} key={index}>${price} USD</option>)}
+                <option value={''}>-- Precio Max. --</option>
+                {prices?.map((price, index) => <option value={price} key={index}>${price} ARS</option>)}
             </select>
             <select onChange={changeSort} >
                 <option value={''}>-- Ordenar por Precio --</option>
