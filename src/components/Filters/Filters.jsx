@@ -88,7 +88,7 @@ const Filters = () => {
                 {prices?.map((price, index) => <option value={price} key={index}>${price} USD</option>)}
             </select>
             <select onChange={changeSort} >
-                <option>-- Ordenar por Precio --</option>
+                <option value={''}>-- Ordenar por Precio --</option>
                 <option value={"asc"}>Ascendente</option>
                 <option value={"desc"}>Descendente</option>
             </select>

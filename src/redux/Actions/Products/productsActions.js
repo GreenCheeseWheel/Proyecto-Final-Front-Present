@@ -21,7 +21,8 @@ export const getAllProducts = () => {
 export const getProductByName = (name) => {
     return async (dispatch) => {
         try {
-            const { data } = await axios.get(`https://pf-back-deploy.onrender.com/product?name=${name}`);
+            //const { data } = await axios.get(`https://pf-back-deploy.onrender.com/product?name=${name}`);
+            const { data } = await axios.get(`http://localhost:3001/product?name=${name}`);
 
             dispatch({
                 type: GET_PRODUCT_NAME,

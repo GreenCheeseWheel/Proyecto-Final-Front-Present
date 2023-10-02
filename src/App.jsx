@@ -290,12 +290,7 @@ const App = () => {
         <Route path="/adminUsers" element={<Users />} />
         <Route path="/adminSales" element={<Sales />} />
       </Routes>
-      <Pagination
-        currentPage={currentPage}
-        items={items}
-        nextHandler={nextHandler}
-        prevHandler={prevHandler}
-      />
+      
       <Footer  />
     </div>
   );

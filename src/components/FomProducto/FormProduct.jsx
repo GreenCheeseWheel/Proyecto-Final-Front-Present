@@ -56,6 +56,8 @@ const FormProduct = () => {
     } else {
       console.error("Error al cargar la imagen a Cloudinary");
     }
+
+   isFormValid();
   };
 
   const submitHandler = (event) => {

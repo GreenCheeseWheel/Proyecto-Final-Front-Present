@@ -22,7 +22,7 @@ function Searchbar() {
   
   return (
       <div>
-          <h4>Search your Video Game</h4>
+          <h4>Busca tu producto</h4>
           <input onChange={(event) => {handleChange(event)}} type="search" value={name}/>
           <button onClick={(event) => {handleSearch(event)}}>Search{""}</button>
       </div>
